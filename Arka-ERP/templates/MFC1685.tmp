@@ -1,0 +1,818 @@
+{$IncludeCSS}
+{$IncludeJS}
+{literal}
+	<script type="text/javascript" src='./dhtmlxMessage/codebase/dhtmlxmessage.js'></script>
+	<script type='text/javascript' src='./auto-complete/jquery-1.3.2.js'></script>
+	<script type='text/javascript' src='./auto-complete/jquery.metadata.js'></script>
+	<script type='text/javascript' src='./auto-complete/jquery.auto-complete.js?<?= mktime() ?>'></script>
+	<script type='text/javascript' src='./auto-complete/js.js?<?= mktime() ?>'></script>
+	<link rel="stylesheet" href= "./codebase/skins/dhtmlxmessage_dhx_skyblue.css" type="text/css" media="all"/> 
+	<link rel='stylesheet' type='text/css' href='auto-complete/jquery.auto-complete.css?<?= mktime() ?>' />
+	<link rel="stylesheet" href="'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>
+	<style>
+	th {
+    font-style: normal;
+	font-weight:100;
+	font-size:14px;
+	margin-right:100px;
+}
+#ServiceEdit {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: -30px;
+	bottom: 0;	
+	padding-right: 15px;
+	overflow-y: scroll;
+}
+table { 
+    border-spacing: 2px;
+    border-collapse: separate;
+}
+td
+{ padding:10px;
+
+}
+.isa_success
+{
+color:#4F8A10;
+background-color:#DFF2BF;
+}
+.isa_error
+{
+color:#D8000C;
+background-color:#FFBABA;
+}
+.isa_success i,.isa_error i
+{
+margin:10px 22px;
+font-size:2em;
+vertical-align:middle;
+
+}
+</style>
+
+<script>
+function Back(){
+					alert("fds");
+					 $("#add_address").hide();
+				});
+
+</script>
+
+<script>
+function retrieve_select_bxs()
+{
+var data_array = ["hdn_salutation","hdn_order_status","hdn_customer_status","hdn_customer_type","hdn_snooze_hour","hdn_snooze_time","hdn_snooze_meridian"];
+var data_fields=["salutation","order_status","customer_status","customer_type","snooze_hour","snooze_time","meridian"];
+var array_len=data_array.length;
+	for(var i=0;i<=array_len;i++)
+	{
+	   var sel_val=document.getElementById(data_array[i]).value;
+	   var field_len = document.getElementById(data_fields[i]).length;
+	   var sel_bx_val=document.getElementById(data_fields[i]).length;
+	   for(var j=0;j<sel_bx_val;j++)
+	   {
+	       cur_val=document.getElementById(data_fields[i]);
+		   if(cur_val.options[j].value==sel_val)
+		   {
+		     cur_val.options[j].selected = true; 
+		   }
+	   }
+	}
+}
+
+function chk_exist_mob(mob_no)
+{
+
+if (mob_no.value=="")
+  {
+  return false;
+  }
+  
+		if(mob_no.value.length==10)
+								{
+								
+								}
+		else
+								{
+								dhtmlx.alert({
+								title: "Error !",
+								type:"alert-error",
+								text: "Mobile Number Should be 10 Digits",	
+											});		
+								return false;									
+								}	  
+  
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	
+	var x;
+       if(xmlhttp.responseText)
+	   {
+  
+	x=xmlhttp.responseText;
+	
+						switch("error_"+mob_no.id)
+						{
+						case "error_mobile":
+						document.getElementById("error_mobile").innerHTML = x;
+						break;
+						case "error_mobile2":
+						document.getElementById("error_mobile2").innerHTML = x;
+						break;
+						case "error_mobile3":
+						document.getElementById("error_mobile3").innerHTML = x;
+						break;
+						case "error_mobile4":
+						document.getElementById("error_mobile4").innerHTML = x;
+						break;
+						case "error_mobile5":
+						document.getElementById("error_mobile5").innerHTML = x;
+						break;
+						}
+
+	   }  
+       
+    }
+  }
+xmlhttp.open("GET","ajax_validate_exist_data.php?q="+mob_no.value+"&mob_validation=yes",true);
+
+xmlhttp.send();
+}
+function chk_exist_pin(pin)
+{
+
+if (pin.value=="")
+  {
+  return false;
+  }
+  
+		if(pin.value.length==6)
+								{
+								return true;
+								}
+		else
+								{
+								dhtmlx.alert({
+								title: "Error !",
+								type:"alert-error",
+								text: "Pincode Should be 6 Digits",	
+											});		
+								return false;									
+								}
+	}	  
+  
+
+
+function chk_exist_cmp(cmp_name)
+{
+
+if (cmp_name.value=="")
+  {
+  return false;
+  }  
+  
+if (window.XMLHttpRequest)
+
+
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	
+	var x;
+       if(xmlhttp.responseText)
+	   {
+  
+			x=xmlhttp.responseText;
+			document.getElementById("error_cmp_name").innerHTML = x;
+
+	   }  
+       
+    }
+  }
+xmlhttp.open("GET","ajax_validate_exist_data.php?q="+cmp_name.value+"&cmp_validation=yes",true);
+
+xmlhttp.send();
+}
+
+
+
+function chk_exist_email(email){
+dhtmlx.alert({
+    title: "Mail",
+    type:"alert-error",
+    text: "Mail Already Exists!",
+    callback: function(result) 
+	{
+				if(result==true)
+				{
+
+if (email.value=="")
+  {
+  return false;
+  }  
+  
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+	
+	var x;
+       if(xmlhttp.responseText)
+	   {
+  
+			x=xmlhttp.responseText;
+			document.getElementById("error_email_id").innerHTML = x;
+
+	   }  
+       
+    }
+  }
+xmlhttp.open("GET","ajax_validate_exist_data.php?q="+email.value+"&email_validation=yes",true);
+
+xmlhttp.send();
+   }	
+	}
+});
+ 
+ }
+ 
+ 
+ 
+ 
+function GoBack()
+{
+window.history.back();
+}
+function clear_err_name_of_cmp()
+{
+document.getElementById("error_cmp_name").innerHTML = "";
+}
+function clear_err_mobile(mob)
+{
+switch("error_"+mob)
+{
+case "error_mobile":
+document.getElementById("error_mobile").innerHTML = "";
+break;
+case "error_mobile2":
+document.getElementById("error_mobile2").innerHTML = "";
+break;
+case "error_mobile3":
+document.getElementById("error_mobile3").innerHTML = "";
+break;
+}
+
+
+}
+
+
+function clear_err_email_id()
+{
+document.getElementById("error_email_id").innerHTML = "";
+}
+function doOnLoad() 
+			{
+			var myCalendar;
+			myCalendar = new dhtmlXCalendarObject({input: "quote_date", button: "calendar_icon1"});
+			retrieve_select_bxs();
+		}
+		
+/*function runMe()
+{
+ document.cookie = name+"=index%3d1; expires=whenever;path=/";
+ window.history.back()
+}*/	
+function numericFilter(data) 
+{
+   data.value = data.value.replace(/[^.0-9^.+,-]/ig,"");
+}	
+function text_filter(data)
+{
+   data.value = data.value.replace(/[^ .a-z]/ig,"");
+   
+}
+function validate_phone(data)
+{
+		if(data.value.length==10)
+								{
+								return true;
+								}
+		else
+								{
+								dhtmlx.alert({
+								title: "Error !",
+								type:"alert-error",
+								text: "Mobile Number Should be 10 Digits",	
+											});		
+								return false;									
+								}						
+}	
+
+
+		
+       function validate_fields()
+        {	
+		
+		var fields=["quote_date","payment","delivery","validity","sqft","product_description","material","total_material","material_tax_per","total_material_cost","labour","total_labour","labour_tax_per","total_labour_cost","total"];
+				for(i=0;i<fields.length;i++)
+				{
+				//alert(fields[i]);
+				current_iteration = document.getElementById(fields[i]).value;
+				document.getElementById(fields[i]).style.borderColor="";
+						if(current_iteration=="")
+						{
+						dhtmlx.alert({
+								title: "Error !",
+								type:"alert-error",
+								text: "Please Fill "+fields[i],	
+									 });
+				//		alert("Please Fill! "+fields[i]);
+						document.getElementById(fields[i]).focus();
+						document.getElementById(fields[i]).style.borderColor="red";
+						return false;
+						}
+				}
+			  FormName		= document.add_address;
+  			  FormName.method	= "POST";
+              FormName.submit();
+		}
+		
+		
+function validateForm() {
+    var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+}		
+ function csearch() {
+  var str =	document.getElementById("customersearch").value;
+//  alert(str);
+  if (str=="") {
+    document.getElementById("customersearch").value="";
+    return;
+  }
+  FormName		= document.cussearch;
+  FormName.action ='customer_details_view.php?search_value='+str;          
+  FormName.submit();
+ 
+}
+ function msearch() {
+  var str =	document.getElementById("mobilesearch").value;
+//  alert(str);
+  if (str=="") {
+    document.getElementById("mobilesearch").value="";
+    return;
+  }
+  FormName		= document.mobsearch;
+  FormName.action ='customer_details_view.php?search_value='+str;          
+  FormName.submit();
+ 
+}
+
+function add_more_mobile()
+{
+  var cnt_mobile=document.getElementById("mobile_fld_cnt").value;
+	  if(cnt_mobile!=4)
+	  {
+		  document.getElementById("mobile_fld_cnt").value=parseInt(cnt_mobile)+1;
+		  document.getElementById("hdn_mobile"+cnt_mobile).removeAttribute("style");
+		  document.getElementById("hdn_adjacent"+cnt_mobile).removeAttribute("style");
+	  }
+	  else
+	 {
+		dhtmlx.alert({
+		title: "Mobile No",
+		type:"alert-error",
+		text: "You Can't Enter More Than 3 Mobile Number "});
+	  }
+}
+
+function add_more_phone(){
+
+    
+  var cnt_phone=document.getElementById("phone_fld_cnt").value;
+	  if(cnt_phone!=3)
+	  {
+		  document.getElementById("phone_fld_cnt").value=parseInt(cnt_phone)+1;
+		  document.getElementById("hdn_phone"+cnt_phone).removeAttribute("style");
+		//  document.getElementById("hdn_adjacent"+cnt_phone).removeAttribute("style");
+	  }
+	  else
+	  {
+			dhtmlx.alert({
+			title: "Phone No",
+			type:"alert-error",
+			text: "Can't Enter More Than 2 Phone Number "});
+	  }
+}
+
+
+
+function add_more_email()
+{
+  var cnt_email=document.getElementById("email_fld_cnt").value;
+ // alert(cnt_email);
+	  if(cnt_email!=3)
+	  {
+		  document.getElementById("email_fld_cnt").value=parseInt(cnt_email)+1;
+		 // alert("hdn_email");
+		  document.getElementById("hdn_email"+cnt_email).removeAttribute("style");
+		  document.getElementById("hdn_email"+cnt_email+"_adjacent").removeAttribute("style");
+	  }
+	  else
+		{
+			dhtmlx.alert({
+			title: "Email Id",
+			type:"alert-error",
+			text: "You Can't Enter More Than 2 Mail Id "});
+	  }
+}
+</script>
+<script>
+
+function getvalue()
+{					var quantity = document.getElementById('material').value;
+					var price = document.getElementById('sqft').value;
+					var cost = (quantity * price);
+					document.getElementById('material_value').value=cost;
+					var total_material = document.getElementById('total_material').value;
+					var total_est = (cost * total_material);
+					document.getElementById('material_estimate').value=total_est;
+					var tax = document.getElementById('material_tax_per').value;
+					
+					if(tax != "")
+					{
+							var tax_value = (total_est * tax)/100;
+							document.getElementById('material_tax_value').value=tax_value;
+							var total1 = (+tax_value + +total_est);
+							document.getElementById('total_material_cost').value=total1;
+					}
+					getvalue2();
+					
+}	
+function getvalue1()
+{					var quantity = document.getElementById('labour').value;
+					var price = document.getElementById('sqft').value;
+					var cost = (quantity * price);
+					document.getElementById('labour_value').value=cost;
+					var total_labour = document.getElementById('total_labour').value;
+					var total_est = (cost * total_labour);
+					document.getElementById('labour_estimate').value=total_est;
+					var tax = document.getElementById('labour_tax_per').value;
+					
+					if(tax != "")
+					{
+							var tax_value = (total_est * tax)/100;
+							document.getElementById('labour_tax_value').value=tax_value;
+							var total2 = (+tax_value + +total_est);
+							document.getElementById('total_labour_cost').value=total2;
+					}
+					
+					 getvalue2();
+}	
+
+
+function getvalue2()
+{
+var Total1 = document.getElementById('total_material_cost').value;
+var Total2 = document.getElementById('total_labour_cost').value;
+var total_val = +Total1 + +Total2;
+document.getElementById('total').value=total_val;
+					}
+</script>
+
+
+{/literal}
+<body class="hold-transition skin-blue sidebar-mini" onLoad="doOnLoad();">
+<div id="ServiceEdit">
+		<form class="form-horizontal" name="add_address">
+			<input type="hidden" name="hdAction" />
+			<input type="hidden" id="customer_id" name="customer_id"  value="{$smarty.get.customer_id}"  >
+					<input type="hidden" id="mobile_fld_cnt" name="mobile_fld_cnt"  value="2"  >
+					<input type="hidden" id="phone_fld_cnt" name="phone_fld_cnt"  value="2"  >
+					<input type="hidden" id="email_fld_cnt" name="email_fld_cnt"  value="2"  >
+					<input type="hidden" id="hdn_salutation" name="hdn_salutation" value="{$smarty.post.salutaion}">
+					<input type="hidden" id="hdn_order_status" name="hdn_order_status" value="{$smarty.post.order_status}">
+					<input type="hidden" id="hdn_customer_status" name="hdn_customer_status" value="{$smarty.post.customer_status}">
+					<input type="hidden" id="hdn_customer_type" name="hdn_customer_type" value="{$smarty.post.customer_type}">
+							{if $SuccessMessage neq ""}
+							<div class="isa_success">
+							<i class="fa fa-check"></i>
+							{$SuccessMessage}		 
+							</div>
+							{/if}
+							{if $ErrorMessage neq ""}
+							<div class="isa_error">
+							<i class="fa fa-times"></i>
+							{$ErrorMessage}		 
+							</div>
+							{/if}
+				
+    <table class="col-md-6" >
+	
+<tr class="form-group">
+	<td class="col-sm-3">
+		
+		<tr class="form-group">	
+				<th class="col-sm-2 control-th">Service Quote No</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="service_quote_no" name=" service_quote_no"  value="{$smarty.get.service_quote_no}" readonly="true" tabindex="1" placeholder="Service Quote No" autocomplete="Off">
+						<input type="hidden" class="form-control" id="revised_version" name=" revised_version"  value="{$smarty.get.revised_version}" readonly="true" tabindex="1" placeholder="revised_version" autocomplete="Off">
+						<input type="hidden" class="form-control" id="enquiry_id" name=" enquiry_id"  value="{$RevDetail.0.enquiry_id}" readonly="true" tabindex="1" placeholder="enquiry_id" autocomplete="Off">
+						<input type="hidden" id="created_by" name="created_by" value="{$LDList2.0.created_by}"/>
+						</td>
+						<td class="col-sm-5">
+						<!--<font class="error" color="#f56954"><b>*</b>&nbsp;</font>-->
+						</td>
+						
+				<th class="col-sm-2 control-th">Quote Date</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="quote_date" name="quote_date" value="{$LDList2.0.service_quote_date}" tabindex="2" readonly="true" placeholder="Quote Date">
+						</td>
+						<td class="col-sm-5">
+						<a href="#"><img id="calendar_icon1" src="codebase/calendar.png"></a><!--<font class="error" color="#f56954"><b>*</b>&nbsp;</font>-->
+						</td>
+			</tr>
+			
+			<!--<tr class="form-group" style="border-bottom: 1px solid #d6d2d2;">-->
+			<tr class="form-group" >
+					<th class="col-sm-2 control-th">Payment</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" placeholder="ex :  50%" id="payment" name="payment" value="{$ServiceTerm.0.payment}"  tabindex="3" autocomplete="Off">
+						
+						<td></td>
+						</td> 
+						<th class="col-sm-2 control-th">Delivery</th>
+						<td class="col-sm-5">
+						 <input type="text" class="form-control" placeholder="ex : 2 to 3" id="delivery" name="delivery" value="{$ServiceTerm.0.delivery}" tabindex="4" autocomplete="Off">
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+</tr>
+			<!--<tr class="form-group" style="border-bottom: 1px solid #d6d2d2;">-->
+					<tr class="form-group" >
+					<th class="col-sm-2 control-th">Validity</th>
+						<td class="col-sm-5">
+					<input type="text" class="form-control" placeholder="ex : 30" id="validity" name="validity" value="{$ServiceTerm.0.validity}"  tabindex="5" autocomplete="Off" >
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td> 
+											
+						<th class="col-sm-2 control-th">Sqft</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="sqft" name="sqft" value="{$smarty.post.sqft}"  tabindex="6" autocomplete="Off" onKeyUp="getvalue3();getvalue4();numericFilter(this);">
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td> 
+						</tr>
+					<tr class="form-group" >
+
+						<th class="col-sm-2 control-th">Product Desc</th>
+						<td class="col-sm-5">
+						 <input type="text" class="form-control" id="product_description" name="product_description" value="{$smarty.post.material_description}" tabindex="7" autocomplete="Off">
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+					<th class="col-sm-2 control-th"> Material / sqft</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="material" name="material" value="{$smarty.post.material}"  tabindex="7" autocomplete="Off" onKeyUp="getvalue3();numericFilter(this);" >
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+		  </tr>
+					<tr class="form-group" >
+
+					<th class="col-sm-2 control-th">Total Mat</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="total_material" name="total_material" value="{$smarty.post.total_material}"   tabindex="8" autocomplete="Off" onKeyUp="getvalue();">
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+
+				<th class="col-sm-2 control-th">Mat Tax %</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="material_tax_per" name="material_tax_per" value="{$smarty.post.material_tax_per}" onKeyUp="getvalue();numericFilter(this);" tabindex="9" autocomplete="Off">
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+						</tr>
+						
+					<tr class="form-group" >
+						<th class="col-sm-2 control-th" >Total Mat Cost</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="total_material_cost" name="total_material_cost" value="{$smarty.post.total_material_cost}" tabindex="10" autocomplete="Off" onKeyUp="getvalue2();" readonly="true">
+						<input type="hidden" class="form-control" id="timestamp" name="timestamp" value="{$smarty.now|date_format:'%Y-%m-%d &amp; %I:%M:%S %p'}">
+						<input type="hidden" class="form-control" id="created_date" name="created_date" value="{$smarty.now|date_format:'%Y-%m-%d'}">
+						<input type="hidden" class="form-control" id="created_time" name="created_time" value="{$smarty.now|date_format:'%I:%M:%S %p'}">
+						<input type="hidden" class="form-control" id="material_value" name="material_value" value="{$smarty.post.material_value}" placeholder="Material  Value">
+						 <input type="hidden" class="form-control" id="material_tax_value" name="material_tax_value" value="{$smarty.post.material_tax_value}" placeholder="Material Tax Value">
+						 <input type="hidden" class="form-control" id="material_estimate" name="material_estimate" value="{$smarty.post.material_estimate}" placeholder="Material Estimate">
+						 <input type="hidden" class="form-control" id="created_by" name="created_by" tabindex="25"  value="{$smarty.session.UserName}"/>
+						<td  ><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+						
+					<th class="col-sm-2 control-th"> Labour / sqft</th>
+						<td class="col-sm-5">
+						 <input type="text" class="form-control" id="labour" name="labour" value="{$smarty.post.labour}"  tabindex="11" autocomplete="Off" onKeyUp="getvalue4();numericFilter(this);">
+						
+						<td ><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+					</td>
+					
+				</tr>
+					<tr class="form-group" >
+					<th class="col-sm-2 control-th">Total Lab</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="total_labour" name="total_labour" value="{$smarty.post.total_labour}"  tabindex="12" onKeyUp="getvalue1();">
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+						
+					<th class="col-sm-2 control-th">Lab Tax %</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="labour_tax_per" name="labour_tax_per" value="{$smarty.post.labour_tax_per}"  onKeyUp="getvalue1();numericFilter(this);" tabindex="13" autocomplete="Off">
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+
+						</td>
+						</tr>
+					<tr class="form-group" >
+						<th class="col-sm-2 control-th">Total Lab Cost</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="total_labour_cost" name="total_labour_cost" value="{$smarty.post.total_labour_cost}"   tabindex="14" autocomplete="Off" onKeyUp="getvalue2();">
+						<input type="hidden" class="form-control" id="labour_value" name="labour_value" value="{$smarty.post.labour_value}" placeholder="Labour Value">
+						<input type="hidden" class="form-control" id="labour_tax_value" name="labour_tax_value" value="{$smarty.post.labour_tax_value}"  >
+						<input type="hidden" class="form-control" id="labour_estimate" name="labour_estimate" value="{$smarty.post.labour_estimate}"   >
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+						</td>
+
+</tr>
+
+<!--<tr class="form-group">
+					<th class="col-sm-2 control-th">Lab Value</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="labour_value" name="labour_value" value="{$smarty.post.labour_value}" placeholder="Labour Value" tabindex="17">
+						
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font></td>
+						</td>
+		  
+					<th class="col-sm-2 control-th">Lab Tax Val</th>
+						<td class="col-sm-5">
+						 
+						<input type="text" class="form-control" id="labour_tax_value" name="labour_tax_value" value="{$smarty.post.labour_tax_value}"  tabindex="18">
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font></td>
+						</td>
+						
+					</tr>-->
+					<!--<tr class="form-group">
+					<th class="col-sm-2 control-th">Lab Est</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="labour_estimate" name="labour_estimate" value="{$smarty.post.labour_estimate}"   tabindex="19">
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font></td>
+						</td>
+							</tr>-->
+						<tr class="form-group" style="display:none;">
+				<th class="col-sm-2 control-th">Total</th>
+						<td class="col-sm-5">
+						<input type="text" class="form-control" id="total" name="total"  tabindex="15" onKeyUp="numericFilter(this);" autocomplete="Off" value="{$smarty.post.total}" >
+						<td><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>  						</td>
+		  					
+							<!--<th class="col-sm-2 control-th">Remarks</th>
+						<td class="col-sm-5">
+					 <textarea class="form-control" id="remarks" name="remarks" value="{$smarty.post.remarks}" placeholder="Remarks" tabindex="22" autocomplete="off"></textarea> 
+						</td>
+						<td>--><!--&nbsp;<font class="error" color="#f56954"><b>*</b>&nbsp;</font>--></td>
+		    </tr> 
+			
+	
+	</td>
+	</tr>
+
+	</table>
+  
+					
+					</form>
+					<div class="box-footer">
+					<center>
+                  
+					<input type="button" class="btn btn-info pull-center" value="SUBMIT"  onClick="validate_fields();">&nbsp;&nbsp;
+					</center>
+					</div>
+					<div class="tab-pane" id="service">
+				<form name="ServiceList" id="ServiceList" method="post">
+                  <table id="example2" class="table table-bordered table-striped" style="font-size:13px; font-family:'Times New Roman', Times, serif;">
+                    <thead>
+					<tr>
+					            <th>Sl No</th>
+								<th>Material Description</th>
+								<th>Sqft</th>
+								<th>Material</th>
+								<th>Labour </th>
+								<th>Total Material</th>
+								<th>Total Labour</th>
+								<th>Total </th>
+								<th>Action</th>
+						      
+					</tr>
+                    </thead>
+                    <tbody>
+                     {foreach from=$Revise item=Contact}
+					<tr id="{$i++}">   
+					     <input type="hidden" value="{$SubView.0.Sub}"/>
+						 <input type="hidden" value="{$Contact.total}"/>
+					            <td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$i}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.material_description}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.sqft}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.material}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.labour}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.total_material}</a></td>								
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.total_labour}</a></td>
+								<td align="center"><a href="#" onClick="Javascript:viewCats('{$Contact.customer_id}')">{$Contact.total}</a></td>
+								
+					<td class="center">&nbsp;&nbsp; &nbsp;&nbsp;<a href="#" onClick="Javascript:deleteCat('{$Contact.sl_no}','{$smarty.get.service_quote_no}','{$Contact.revised_version}','{$Contact.total}','{$SubView.0.Sub}')"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+					
+					 
+					  {foreachelse}
+					<tr>
+								<td height="20" colspan="12" align="center"><img src="images/warning.gif" border="0">&nbsp;No Records Found</td>
+					</tr>
+					{/foreach}
+					</tbody>
+                    </tfoot>
+                  </table>
+				 </form>
+				 			 {literal}
+
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+	  
+ 
+ function deleteCat(CatIdent,CusIdent,Rive,Total,Sub){
+  if(confirm("Are you sure to Delete this Content?")){
+
+  FormName		= document.ServiceList;
+  FormName.action= "service_edit.php?sl_no="+CatIdent+"&service_quote_no="+CusIdent+"&revised_version="+Rive+"&total="+Total+"&sub_total="+Sub;
+  FormName.submit();
+ }
+ }
+ function viewCats(CusIdent) {
+    
+  FormName		= document.ServiceList;
+  FormName.action ='service.php?customer_id='+CatIdent;          
+  FormName.submit();
+
+ }
+    </script>
+	<style>
+	table {
+    /* make the border continuous (without gaps between columns) */
+    border-collapse: collapse;
+}
+</style>
+	{/literal} 
+				 </div>
+                  </div>
+					
+</body>
+                 
+				  

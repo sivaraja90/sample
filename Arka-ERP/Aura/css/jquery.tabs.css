@@ -1,0 +1,132 @@
+/* Caution! Ensure accessibility in print and other media types... */
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .tabs-hide {
+        display: none;
+    }
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .tabs-nav {
+        display: none;
+    }
+}
+
+/* Skin */
+.tabs-nav {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0px 10px 14px;
+}
+.tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.tabs-nav li {
+    float: left; background:none; padding:0;
+	margin: 0 0 0 1px;
+    min-width: 84px; /* be nice to Opera */
+}
+
+.tabs-nav a {
+    position: abbsolute; z-index: 1; top:1px;
+	padding-left: 0; color: #27537a; font-size: 12px; font-weight: bold; line-height: 1.2;
+    text-align: center;   text-decoration: none; white-space: nowrap; /* required in IE 6 */; height:35px; min-height:35px; 
+	background-position:100% -126px; padding-left:0 !important;  margin:4px 0 0 0 !Important;  
+}
+.tabs-nav a, .tabs-nav a span {
+    display: block;  padding: 0 10px; background-image:url(h_tab1_a.gif); }
+
+
+
+
+.tabs-nav a span {
+    width: 200px; 
+    height: 20px; /* IE 6 treats height as min-height */
+    min-height: 20px;
+    padding: 15px 0 0 15px; color:#566494;
+    text-align:left; text-transform:uppercase; 
+}
+
+*>.tabs-nav a span { /* hide from IE 6 */
+    width: auto;
+    height: auto;
+}
+
+.tabs-nav a:hover {
+    background-position:100% -84px;
+    outline: 0; /* prevent dotted border in Firefox */
+}
+
+.tabs-nav a:focus {
+    background-position:100% -84px;
+    outline: 0; /* prevent dotted border in Firefox */
+}
+.tabs-nav a:active {
+    background-position:100% -84px;
+    outline: 0; /* prevent dotted border in Firefox */
+}
+.tabs-nav a span{
+    background-position: 0 -42px;
+}
+
+.tabs-nav a:hover span{
+    background-position: 0 0px;
+}
+.tabs-nav a:focus span  {
+    background-position: 0 0px;
+}
+.tabs-nav a:active span {
+    background-position: 0 0px;
+}
+
+
+
+
+
+
+
+
+.tabs-nav .tabs-selected a {
+    background-position:100% -84px; margin:0px 0 0 0 !Important; height:42px; min-height:42px;
+    outline: 0; /* prevent dotted border in Firefox */
+}
+.tabs-nav .tabs-selected a:hover { background-position:100% -84px}
+.tabs-nav .tabs-selected a:hover span{ background-position:0 0px}
+
+.tabs-nav .tabs-selected a span {
+    padding-top: 15px; color:#96431c;
+}
+.tabs-nav .tabs-selected a span {
+    background-position: 0 0px; height:25px !Important; 
+}
+
+
+
+
+
+
+
+
+
+.tabs-nav .tabs-selected a:link, .tabs-nav .tabs-selected a:visited, .tabs-nav .tabs-disabled a:link, .tabs-nav .tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */
+    cursor: text;
+}
+.tabs-nav a:hover, .tabs-nav a:focus, .tabs-nav a:active { /* @ Opera, we need to be explicit again here now... */
+    cursor: pointer;
+}
+.tabs-nav .tabs-disabled {
+    opacity: .4;
+}
+.tabs-container {
+  /* border-top: 1px solid #97a5b0; */
+    padding: 1em 8px; color:#434b53; position:relative; top:-1px; min-height:162px;
+    /*background: #fff url(tab_left_line.gif) no-repeat left top;  declare background color for container to avoid distorted fonts in IE while fading */
+}
+.tabs-container img{ float:left; margin:0 15px 15px 0;}
+
+.tabs-loading em {
+    padding: 0 0 0 20px;
+    background: url(loading.gif) no-repeat 0 50%;
+}

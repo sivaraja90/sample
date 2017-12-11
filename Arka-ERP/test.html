@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Attach to custom object</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/fonts/font_roboto/roboto.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlx.css"/>
+	<script src="../../../codebase/dhtmlx.js"></script>
+	<script>
+		
+		var myPop;
+		
+		function showPopup(O,T,TH,F,FI) {
+			if(!myPop){
+				myPop = new dhtmlXPopup();
+				myPop.attachHTML(<a href='FI'>Service Mail</a>);
+				if(FI=='5')
+				{
+FormName		= document.ProjectList;
+FormName.action ='project_print1.php?enquiry_id='+enq_id+"&project_quote_no="+proj_no+"&enquiry_type="+enq_type+"&revised_version="+rev_no;
+FormName.submit();
+				}
+				}
+			if (myPop.isVisible()) {
+				myPop.hide();
+			} else {
+				var x = window.dhx4.absLeft(inp);
+				var y = window.dhx4.absTop(inp);
+				var w = inp.offsetWidth;
+				var h = inp.offsetHeight;
+				myPop.show(x,y,w,h);
+			}
+		}
+		
+		function hidePopup() {
+			if (myPop) myPop.hide();
+		}
+	</script>
+</head>
+<body>
+	<input type="text" onclick="showPopup('1','2','3','4','5');" onblur="hidePopup();" value="click">
+</body>
+</html>
+

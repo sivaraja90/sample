@@ -1,0 +1,664 @@
+{include file="left.tpl"}
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+		<h1>
+		Create PO
+         <small><a href="#">List PO</a></small>
+		 </h1>
+
+         
+          <!--<ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li class="active">Advanced Elements</li>
+          </ol>-->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+          <!-- SELECT2 EXAMPLE -->
+          <div class="box box-default">
+            <div class="box-header with-border" align="center">
+              <h3 class="box-title">PO Master</h3>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div><!-- /.box-header -->
+			
+			<form class="form-horizontal">
+                  <div class="box-body">
+				   <div class="col-md-6">
+                    <div class="form-group">			 
+                      <label class="col-sm-4 control-label">PO No</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="po_no" name="po_no" tabindex="1" placeholder="PO No">
+                      </div>
+                    </div>
+					 <div class="form-group">
+                      <label class="col-sm-4 control-label">Contact Person</label>
+                      <div class="col-sm-2">
+					<div class="margin">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-default">Action</button>
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+					    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                   		</div>
+					  </div>
+					  </div>
+					 
+					  <div class="col-sm-3">
+                        <input type="text" class="form-control" id="supplier_contact_person_fname" name="supplier_contact_person_fname" placeholder="First name" tabindex="4">
+					</div>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="supplier_contact_person_lname" name="supplier_contact_person_lname" placeholder="Last name" tabindex="5">
+                      </div>
+                    </div>
+				<div class="form-group">
+                      <label class="col-sm-4 control-label">Quote Reference Id</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="quote_ref_id" name="quote_ref_id" tabindex="7" placeholder="Quote Reference Id">
+                      </div>
+					  </div>
+					  <div class="form-group">
+                      <label class="col-sm-4 control-label">Supplier Code</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="supplier_code" name="supplier_code" tabindex="9" placeholder="Supplier Code">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Mobile No</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="supplier_mobile1" name="supplier_mobile1" tabindex="8" placeholder="Mobile No">
+                      </div>
+					  <button type="add" class="box-tools pull-left">ADD</button>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Address</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="address" name="address" tabindex="9" placeholder="Address">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Supplier Mail Id</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="supplier_mail1" name="supplier_mail1" tabindex="17" placeholder="Mail Id">
+                      </div>
+					  <button type="add" class="box-tools pull-left">ADD</button>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Type</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_type" name="item_type" tabindex="11" placeholder="Item Type">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Price</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_price" name="item_price" tabindex="13" placeholder="Item Price">
+                      </div>
+                    </div>
+					 <div class="form-group">
+                      <label class="col-sm-4 control-label">Item Speciication</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_speciication" name="item_speciication" tabindex="16" placeholder="Item Speciication">
+                      </div>
+                    </div> 					
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Tax Value</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_tax_val" name="item_tax_val" tabindex="16" placeholder="Item Tax Value">
+                      </div>
+                    </div>
+					<div class="form-group">			 
+                      <label class="col-sm-4 control-label">Created By</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="created_by" name="created_by" tabindex="22" placeholder="Created By">
+                      </div>
+                    </div> 
+					<div class="form-group">			 
+                      <label class="col-sm-4 control-label">Timestamp Value</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="timestamp_value" name="timestamp_value" tabindex="22" placeholder="Timestamp Value">
+                      </div>
+                    </div> 
+                   	</div>
+					<!--**********************************************************-->
+                      <div class="col-md-6">
+					  <div class="form-group">
+                      <label class="col-sm-4 control-label">PO Date</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="po_date" name="po_date" tabindex="2"  placeholder="Date">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Company Name</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="vendor_company_name" name="vendor_company_name" tabindex="2"  placeholder="Vendor Company Name">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Quote Date</label>
+                      <div class="col-sm-5">
+                        <input type="date" class="form-control" id="quote_date" name="quote_date" placeholder="2015/01/01" tabindex="6">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">PO Status</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="po_status" name="po_status" tabindex="15" placeholder="PO Status">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Phone No</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="phone_no" name="phone_no" tabindex="8" placeholder="Phone No">
+                      </div>
+					  <button type="add" class="box-tools pull-left">ADD</button>
+                    </div>				
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Address1</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="address1" name="address1" tabindex="10" placeholder="Address1">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Code</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_code" name="item_code" tabindex="12" placeholder="Item Code">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Name</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_name" name="item_name" tabindex="12" placeholder="Item Name">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Quantity</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_quantity" name="item_quantity" tabindex="14" placeholder="Item Quantity">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Item Tax Percentage</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="item_tax_per" name="item_tax_per" tabindex="19" placeholder="Item Tax Percentage">
+                      </div>
+                    </div>
+					
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Created Date</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="created_date" name="created_date" tabindex="18" placeholder="Date">
+                      </div>
+                    </div> <div class="form-group">
+                      <label class="col-sm-4 control-label">Created Time</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="created_time" name="created_time" tabindex="20" placeholder="Time">
+                      </div>
+                    </div>
+					 
+					<div class="form-group">
+                      <label class="col-sm-4 control-label">Remarks</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" id="remarks" name="remarks" tabindex="24" placeholder="Remarks">
+                      </div>
+                    </div>
+					</div>
+                    </div>
+					 <div class="box-footer"><center>
+                    <button type="submit" class="btn btn-info">ADD PO</button>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-info ">CANCEL</button></center>
+                  </div>
+                  </div><!-- /.box-body -->
+                  <!--<div class="box-footer">
+                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                  </div>--><!-- /.box-footer -->
+                </form>
+<!--            <div class="box-footer">
+              Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about the plugin.
+            </div>-->
+         <!-- /.box -->
+
+          <!--<div class="row">
+            <div class="col-md-6">
+
+              <div class="box box-danger">
+                <div class="box-header">
+                  <h3 class="box-title">Input masks</h3>
+                </div>
+                <div class="box-body">
+                   Date dd/mm/yyyy 
+                  <div class="form-group">
+                    <label>Date masks:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   Date mm/dd/yyyy 
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask="'alias': 'mm/dd/yyyy'" data-mask>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   phone mask 
+                  <div class="form-group">
+                    <label>US phone mask:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   phone mask 
+                  <div class="form-group">
+                    <label>Intl US phone mask:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-phone"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   IP mask 
+                  <div class="form-group">
+                    <label>IP mask:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-laptop"></i>
+                      </div>
+                      <input type="text" class="form-control" data-inputmask="'alias': 'ip'" data-mask>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                </div> /.box-body 
+              </div> /.box 
+
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">Color & Time Picker</h3>
+                </div>
+                <div class="box-body">
+                   Color Picker 
+                  <div class="form-group">
+
+                    <label>Color picker:</label>
+                    <input type="text" class="form-control my-colorpicker1">
+                  </div> /.form group 
+
+                   Color Picker 
+                  <div class="form-group">
+                    <label>Color picker with addon:</label>
+                    <div class="input-group my-colorpicker2">
+                      <input type="text" class="form-control">
+                      <div class="input-group-addon">
+                        <i></i>
+                      </div>
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   time Picker 
+                  <div class="bootstrap-timepicker">
+                    <div class="form-group">
+                      <label>Time picker:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control timepicker">
+                        <div class="input-group-addon">
+                          <i class="fa fa-clock-o"></i>
+                        </div>
+                      </div> /.input group 
+                    </div> /.form group 
+                  </div>
+                </div> /.box-body 
+              </div> /.box 
+
+            </div> /.col (left) 
+            <div class="col-md-6">
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Date picker</h3>
+                </div>
+                <div class="box-body">
+                   Date range 
+                  <div class="form-group">
+                    <label>Date range:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" id="reservation">
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   Date and time range 
+                  <div class="form-group">
+                    <label>Date and time range:</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" id="reservationtime">
+                    </div> /.input group 
+                  </div> /.form group 
+
+                   Date and time range 
+                  <div class="form-group">
+                    <label>Date range button:</label>
+                    <div class="input-group">
+                      <button class="btn btn-default pull-right" id="daterange-btn">
+                        <i class="fa fa-calendar"></i> Date range picker
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+                    </div>
+                  </div> /.form group 
+
+                </div> /.box-body 
+              </div> /.box 
+
+               iCheck 
+              <div class="box box-success">
+                <div class="box-header">
+                  <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
+                </div>
+                <div class="box-body">
+                   Minimal style 
+
+                   checkbox 
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="minimal" checked>
+                    </label>
+                    <label>
+                      <input type="checkbox" class="minimal">
+                    </label>
+                    <label>
+                      <input type="checkbox" class="minimal" disabled>
+                      Minimal skin checkbox
+                    </label>
+                  </div>
+
+                   radio 
+                  <div class="form-group">
+                    <label>
+
+                      <input type="radio" name="r1" class="minimal" checked>
+                    </label>
+                    <label>
+                      <input type="radio" name="r1" class="minimal">
+                    </label>
+                    <label>
+                      <input type="radio" name="r1" class="minimal" disabled>
+                      Minimal skin radio
+                    </label>
+                  </div>
+
+                   Minimal red style 
+
+                   checkbox 
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="minimal-red" checked>
+                    </label>
+                    <label>
+                      <input type="checkbox" class="minimal-red">
+                    </label>
+                    <label>
+                      <input type="checkbox" class="minimal-red" disabled>
+                      Minimal red skin checkbox
+                    </label>
+                  </div>
+
+                   radio 
+                  <div class="form-group">
+                    <label>
+                      <input type="radio" name="r2" class="minimal-red" checked>
+                    </label>
+                    <label>
+                      <input type="radio" name="r2" class="minimal-red">
+                    </label>
+                    <label>
+                      <input type="radio" name="r2" class="minimal-red" disabled>
+                      Minimal red skin radio
+                    </label>
+                  </div>
+
+                   Minimal red style 
+
+                   checkbox 
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" class="flat-red" checked>
+                    </label>
+                    <label>
+                      <input type="checkbox" class="flat-red">
+                    </label>
+                    <label>
+                      <input type="checkbox" class="flat-red" disabled>
+                      Flat green skin checkbox
+                    </label>
+                  </div>
+
+                   radio 
+                  <div class="form-group">
+                    <label>
+                      <input type="radio" name="r3" class="flat-red" checked>
+                    </label>
+                    <label>
+                      <input type="radio" name="r3" class="flat-red">
+                    </label>
+                    <label>
+                      <input type="radio" name="r3" class="flat-red" disabled>
+                      Flat green skin radio
+                    </label>
+                  </div>
+                </div> /.box-body 
+                <div class="box-footer">
+                  Many more skins available. <a href="http://fronteed.com/iCheck/">Documentation</a>
+                </div>
+              </div> /.box 
+            </div> /.col (right) 
+          </div>--><!-- /.row -->
+
+<!--        </section> /.content 
+      </div> /.content-wrapper 
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 2.3.0
+        </div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+      </footer>
+
+       Control Sidebar 
+      <aside class="control-sidebar control-sidebar-dark">
+         Create the tabs 
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+          <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+         Tab panes 
+        <div class="tab-content">
+           Home tab content 
+          <div class="tab-pane" id="control-sidebar-home-tab">
+            <h3 class="control-sidebar-heading">Recent Activity</h3>
+            <ul class="control-sidebar-menu">
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                    <p>Will be 23 on April 24th</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-user bg-yellow"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+                    <p>New phone +1(800)555-1234</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+                    <p>nora@example.com</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <i class="menu-icon fa fa-file-code-o bg-green"></i>
+                  <div class="menu-info">
+                    <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+                    <p>Execution time 5 seconds</p>
+                  </div>
+                </a>
+              </li>
+            </ul> /.control-sidebar-menu 
+
+            <h3 class="control-sidebar-heading">Tasks Progress</h3>
+            <ul class="control-sidebar-menu">
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Custom Template Design
+                    <span class="label label-danger pull-right">70%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Update Resume
+                    <span class="label label-success pull-right">95%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Laravel Integration
+                    <span class="label label-warning pull-right">50%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript::;">
+                  <h4 class="control-sidebar-subheading">
+                    Back End Framework
+                    <span class="label label-primary pull-right">68%</span>
+                  </h4>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                  </div>
+                </a>
+              </li>
+            </ul> /.control-sidebar-menu 
+
+          </div> /.tab-pane 
+           Stats tab content 
+          <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div> /.tab-pane 
+           Settings tab content 
+          <div class="tab-pane" id="control-sidebar-settings-tab">
+            <form method="post">
+              <h3 class="control-sidebar-heading">General Settings</h3>
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Report panel usage
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Some information about this general settings option
+                </p>
+              </div> /.form-group 
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Allow mail redirect
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Other sets of options are available
+                </p>
+              </div> /.form-group 
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Expose author name in posts
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+                <p>
+                  Allow the user to show his name in blog posts
+                </p>
+              </div> /.form-group 
+
+              <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Show me as online
+                  <input type="checkbox" class="pull-right" checked>
+                </label>
+              </div> /.form-group 
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Turn off notifications
+                  <input type="checkbox" class="pull-right">
+                </label>
+              </div> /.form-group 
+
+              <div class="form-group">
+                <label class="control-sidebar-subheading">
+                  Delete chat history
+                  <a href="javascript::;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+                </label>
+              </div> /.form-group 
+            </form>
+          </div> /.tab-pane 
+        </div>
+      </aside>--><!-- /.control-sidebar -->
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
+    </div>
+  </body>
+</html>
